@@ -1,2 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
+<<<<<<< HEAD
 <merger version="3"><dataSet config="main"><source path="C:\wamp\www\myApp\platforms\android\CordovaLib\assets"/></dataSet><dataSet config="debug"><source path="C:\wamp\www\myApp\platforms\android\CordovaLib\src\debug\assets"/></dataSet></merger>
+=======
+<merger version="3"><dataSet config="main"><source path="C:\wamp\www\LetsEat-v2\platforms\android\CordovaLib\assets"/></dataSet><dataSet config="debug"><source path="C:\wamp\www\LetsEat-v2\platforms\android\CordovaLib\src\debug\assets"/></dataSet></merger>
+>>>>>>> 0a5ea231ed65666b429db614e413552591dcbb80

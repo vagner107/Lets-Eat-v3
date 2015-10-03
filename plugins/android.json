@@ -13,10 +13,13 @@
                             "count": 1
                         },
                         {
+<<<<<<< HEAD
                             "xml": "<feature name=\"PushPlugin\"><param name=\"android-package\" value=\"com.plugin.gcm.PushPlugin\" /></feature>",
                             "count": 1
                         },
                         {
+=======
+>>>>>>> 0a5ea231ed65666b429db614e413552591dcbb80
                             "xml": "<feature name=\"Device\"><param name=\"android-package\" value=\"org.apache.cordova.device.Device\" /></feature>",
                             "count": 1
                         },
@@ -30,6 +33,7 @@
                         }
                     ]
                 }
+<<<<<<< HEAD
             },
             "AndroidManifest.xml": {
                 "parents": {
@@ -78,11 +82,14 @@
                         }
                     ]
                 }
+=======
+>>>>>>> 0a5ea231ed65666b429db614e413552591dcbb80
             }
         }
     },
     "installed_plugins": {
         "com.ionic.keyboard": {
+<<<<<<< HEAD
             "PACKAGE_NAME": "com.ionicframework.myapp988433"
         },
         "com.phonegap.plugins.PushPlugin": {
@@ -99,6 +106,21 @@
         },
         "cordova-plugin-whitelist": {
             "PACKAGE_NAME": "com.ionicframework.myapp988433"
+=======
+            "PACKAGE_NAME": "com.ionicframework.letseatv2247316"
+        },
+        "cordova-plugin-console": {
+            "PACKAGE_NAME": "com.ionicframework.letseatv2247316"
+        },
+        "cordova-plugin-device": {
+            "PACKAGE_NAME": "com.ionicframework.letseatv2247316"
+        },
+        "cordova-plugin-splashscreen": {
+            "PACKAGE_NAME": "com.ionicframework.letseatv2247316"
+        },
+        "cordova-plugin-whitelist": {
+            "PACKAGE_NAME": "com.ionicframework.letseatv2247316"
+>>>>>>> 0a5ea231ed65666b429db614e413552591dcbb80
         }
     },
     "dependent_plugins": {}

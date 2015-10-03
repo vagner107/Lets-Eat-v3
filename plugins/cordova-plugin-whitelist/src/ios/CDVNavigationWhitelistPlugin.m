@@ -76,7 +76,11 @@
 - (void)setViewController:(UIViewController *)viewController
 {
     if ([viewController isKindOfClass:[CDVViewController class]]) {
+<<<<<<< HEAD
         CDVWhitelistConfigParser *whitelistConfigParser = [[CDVWhitelistConfigParser alloc] init];
+=======
+        CDVNavigationWhitelistConfigParser *whitelistConfigParser = [[CDVNavigationWhitelistConfigParser alloc] init];
+>>>>>>> 0a5ea231ed65666b429db614e413552591dcbb80
         [(CDVViewController *)viewController parseSettingsWithParser:whitelistConfigParser];
         self.whitelist = [[CDVWhitelist alloc] initWithArray:whitelistConfigParser.whitelistHosts];
     }
