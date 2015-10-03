@@ -43,18 +43,32 @@ angular.module('starter')
 	var email;
 	var senha;
 	
-	 // seta os dados do login e duas ariaveis privadas
-/*	this.setDadosLogin = function(email1,senha1){ 
-		email = email1;
-		senha = senha1;
-		console.log(email);
-		console.log(senha);		
-	};*/
 	
+	// Cadastra do id do push na id do usuario
+	this.setSenderId = function(){ 
+		var localregid = window.localStorage.getItem('localregid');
+
+		var mail = window.localStorage.getItem('yourTokenKey');
+
+		// console.log("TOKEN  1:" + localregid);
+
+
+		var res1 = mail.split("|"); // criar array pela string separando as pelo '|'
+		
+
+		// console.log("Mail:" + res[0]);
+
+		$http({
+			url: 'http://app.rjag.com.br/app-IOS/cadastro.php', 
+			method: "POST",
+			params: {email:res1[0], senderid:localregid}
+		});
+	};	
+
 	// Refresh chama esse metodo para gerar novamente o JSON e assim alimentar o app com dados atuais
 	this.getRefresh = function(){ 
 		var token = window.localStorage.getItem('yourTokenKey');
-		console.log("TOKEN :" + token);
+		// console.log("TOKEN :" + token);
 
 		var res = token.split("|"); // criar array pela string separando as pelo '|'
 		
@@ -336,6 +350,17 @@ angular.module('starter')
 		type: 'button-energized'}]
 	   });
 	 };
+
+	 $scope.showAlertCidade = function() {
+	   var alertPopup = $ionicPopup.alert({
+		title: 'Selecione a Cidade',
+		template: 'Tente Novamente !',
+		delay : '4000',
+		buttons: [
+		{text: '<b>Ok</b>',
+		type: 'button-energized'}]
+	   });
+	 };
 	 
 	$scope.showAlertSenha = function() {
 	   var alertPopup = $ionicPopup.alert({
@@ -412,7 +437,7 @@ angular.module('starter')
 			$http({
 				url: 'http://app.rjag.com.br/app-IOS/cadastro.php', 
 				method: "POST",
-				params: {nome:$scope.cadastroData.nome, data:$scope.cadastroData.data, email:$scope.cadastroData.email, senha:$scope.cadastroData.			                password					            }
+				params: {nome:$scope.cadastroData.nome, data:$scope.cadastroData.data, email:$scope.cadastroData.email, senha:$scope.cadastroData.password, cod_cidade:$scope.cadastroData.cod_cidade}
 			});
 			
 			

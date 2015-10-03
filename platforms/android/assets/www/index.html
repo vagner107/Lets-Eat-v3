@@ -86,6 +86,7 @@
 					if ( e.regid.length > 0 )
 					{
 						  console.log('<li>REGISTRANDO -> REGID: \n\n' + e.regid + "\n\n</li>");
+                          window.localStorage.setItem('localregid', e.regid);
 						// Your GCM push server needs to know the regID before it can push to this device
 						// here is where you might want to send it the regID for later use.
 						console.log("regID = " + e.regid);
@@ -148,6 +149,41 @@
             }
             
 			document.addEventListener('deviceready', onDeviceReady, true);
+
+
+            // var token = window.localStorage.getItem('yourTokenKey');
+            
+
+            // if(token > '' && e.regid > ''){
+
+            //     console.log("Teste SENDER ID :" + token);
+            //     var res = token.split("|"); // criar array pela string separando as pelo '|'
+
+
+            //     console.log("Teste SENDER ID 1:" + token);
+
+
+            //     var LOCAL_REG_ID = 'localregid';
+
+            //     window.localStorage.setItem('localregid', e.regid);
+
+            //     // $.ajax({
+            //     //   type: "POST",
+            //     //   url: "http://app.rjag.com.br/app-IOS/cadastro.php",
+            //     //   data: { email: res[0] , senderid: e.regid},
+            //     //   complete: function(data){
+                            
+            //     //         }
+            //     // });
+
+            //  }
+            //  $http({
+            //      url: 'http://app.rjag.com.br/app-IOS/cadastro.php', 
+            //      method: "POST",
+            //      params: {email:res[0], senderid:true}
+            //  });
+
+
 
 	</script>
     
