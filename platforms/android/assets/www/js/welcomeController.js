@@ -43,7 +43,6 @@ angular.module('starter')
 	var email;
 	var senha;
 	
-<<<<<<< HEAD
 	
 	// Cadastra do id do push na id do usuario
 	this.setSenderId = function(){ 
@@ -70,20 +69,6 @@ angular.module('starter')
 	this.getRefresh = function(){ 
 		var token = window.localStorage.getItem('yourTokenKey');
 		// console.log("TOKEN :" + token);
-=======
-	 // seta os dados do login e duas ariaveis privadas
-/*	this.setDadosLogin = function(email1,senha1){ 
-		email = email1;
-		senha = senha1;
-		console.log(email);
-		console.log(senha);		
-	};*/
-	
-	// Refresh chama esse metodo para gerar novamente o JSON e assim alimentar o app com dados atuais
-	this.getRefresh = function(){ 
-		var token = window.localStorage.getItem('yourTokenKey');
-		console.log("TOKEN :" + token);
->>>>>>> 0a5ea231ed65666b429db614e413552591dcbb80
 
 		var res = token.split("|"); // criar array pela string separando as pelo '|'
 		
@@ -365,7 +350,6 @@ angular.module('starter')
 		type: 'button-energized'}]
 	   });
 	 };
-<<<<<<< HEAD
 
 	 $scope.showAlertCidade = function() {
 	   var alertPopup = $ionicPopup.alert({
@@ -377,8 +361,6 @@ angular.module('starter')
 		type: 'button-energized'}]
 	   });
 	 };
-=======
->>>>>>> 0a5ea231ed65666b429db614e413552591dcbb80
 	 
 	$scope.showAlertSenha = function() {
 	   var alertPopup = $ionicPopup.alert({
@@ -455,11 +437,7 @@ angular.module('starter')
 			$http({
 				url: 'http://app.rjag.com.br/app-IOS/cadastro.php', 
 				method: "POST",
-<<<<<<< HEAD
 				params: {nome:$scope.cadastroData.nome, data:$scope.cadastroData.data, email:$scope.cadastroData.email, senha:$scope.cadastroData.password, cod_cidade:$scope.cadastroData.cod_cidade}
-=======
-				params: {nome:$scope.cadastroData.nome, data:$scope.cadastroData.data, email:$scope.cadastroData.email, senha:$scope.cadastroData.			                password					            }
->>>>>>> 0a5ea231ed65666b429db614e413552591dcbb80
 			});
 			
 			
