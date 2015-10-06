@@ -4,7 +4,7 @@
 *include module : starter.controllers
 * include module : starter.welcomeController
 */
-angular.module('starter', ['ionic','ionic.service.core', 'ionic.service.deploy', 'starter.controllers'])
+angular.module('starter', ['ionic','ngCordova','ionic.service.core', 'ionic.service.deploy', 'starter.controllers'])
 
 /*.config(['$ionicAppProvider', function($ionicAppProvider) {
   // Identify app
