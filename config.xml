@@ -21,22 +21,6 @@
   <preference name="SplashScreen" value="screen"/>
   <preference name="SplashScreenDelay" value="3000"/>
 
-  <preference name="permissions" value="none" />
-  <preference name="target-device" value="universal" />
-  <preference name="prerendered-icon" value="true" />
-  <preference name="stay-in-webview" value="false" />
-  <preference name="ios-statusbarstyle" value="black-opaque" />
-  <preference name="detect-data-types" value="true" />
-  <preference name="exit-on-suspend" value="false" />
-  <preference name="show-splash-screen-spinner" value="true" />
-  <preference name="auto-hide-splash-screen" value="true" />
-  <preference name="disable-cursor" value="false" />
-
-  <gap:plugin name="org.apache.cordova.media" />
-  <gap:plugin name="org.apache.cordova.network-information" />
-  <gap:plugin name="org.apache.cordova.splashscreen" />
-  <gap:plugin name="org.apache.cordova.vibration" />
-
   <gap:plugin name="com.phonegap.plugins.pushplugin" version="2.4.0"/>
 
   <feature name="StatusBar">

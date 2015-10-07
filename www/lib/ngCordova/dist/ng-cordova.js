@@ -1,7 +1,7 @@
 /*!
  * ngCordova
- * v0.1.20-alpha
- * Copyright 2015 Drifty Co. http://drifty.com/
+ * v0.1.18-alpha
+ * Copyright 2014 Drifty Co. http://drifty.com/
  * See LICENSE in this repository for license information
  */
 (function(){
@@ -107,7 +107,6 @@ angular.module('ngCordova.plugins.adMob', [])
 // install  :     cordova plugin add https://github.com/ohh2ahh/AppAvailability.git
 // link     :     https://github.com/ohh2ahh/AppAvailability
 
-/* globals appAvailability: true */
 angular.module('ngCordova.plugins.appAvailability', [])
 
   .factory('$cordovaAppAvailability', ['$q', function ($q) {
@@ -130,10 +129,9 @@ angular.module('ngCordova.plugins.appAvailability', [])
 // install  :     cordova plugin add https://github.com/pushandplay/cordova-plugin-apprate.git
 // link     :     https://github.com/pushandplay/cordova-plugin-apprate
 
-/* globals AppRate: true */
 angular.module('ngCordova.plugins.appRate', [])
 
-  .provider('$cordovaAppRate', [function () {
+  .provider("$cordovaAppRate", [function () {
 
     /**
       * Set defaults settings to AppRate
@@ -147,7 +145,7 @@ angular.module('ngCordova.plugins.appRate', [])
       * @param {boolean} defaults.useCustomRateDialog
       * @param {string} defaults.iosURL
       * @param {string} defaults.androidURL
-      * @param {string} defaults.blackberryURL
+      * @param {string} defaults.blackberryURL 
       * @param {string} defaults.windowsURL
       */
     this.setPreferences = function (defaults) {
@@ -156,7 +154,7 @@ angular.module('ngCordova.plugins.appRate', [])
       }
 
       AppRate.preferences.useLanguage = defaults.language || null;
-      AppRate.preferences.displayAppName = defaults.appName || '';
+      AppRate.preferences.displayAppName = defaults.appName || "";
       AppRate.preferences.promptAgainForEachNewVersion = defaults.promptForNewVersion || true;
       AppRate.preferences.openStoreInApp = defaults.openStoreInApp || false;
       AppRate.preferences.usesUntilPrompt = defaults.usesUntilPrompt || 3;
@@ -439,7 +437,7 @@ angular.module('ngCordova.plugins.barcodeScanner', [])
 
       encode: function (type, data) {
         var q = $q.defer();
-        type = type || 'TEXT_TYPE';
+        type = type || "TEXT_TYPE";
 
         cordova.plugins.barcodeScanner.encode(type, data, function (result) {
           q.resolve(result);
@@ -486,7 +484,7 @@ angular.module('ngCordova.plugins.batteryStatus', [])
       });
     };
 
-    document.addEventListener('deviceready', function () {
+    document.addEventListener("deviceready", function () {
       if (navigator.battery) {
         $window.addEventListener('batterystatus', batteryStatus, false);
         $window.addEventListener('batterycritical', batteryCritical, false);
@@ -496,14 +494,12 @@ angular.module('ngCordova.plugins.batteryStatus', [])
     }, false);
     return true;
   }])
-  .run(['$injector', function ($injector) {
-    $injector.get('$cordovaBatteryStatus'); //ensure the factory and subsequent event listeners get initialised
+  .run(['$cordovaBatteryStatus', function ($cordovaBatteryStatus) {
   }]);
 
 //  install   :   cordova plugin add https://github.com/don/cordova-plugin-ble-central.git
 //  link      :   https://github.com/don/cordova-plugin-ble-central
 
-/* globals ble: true */
 angular.module('ngCordova.plugins.ble', [])
 
   .factory('$cordovaBLE', ['$q', '$timeout', function ($q, $timeout) {
@@ -852,7 +848,7 @@ angular.module('ngCordova.plugins.brightness', [])
         var q = $q.defer();
 
         if (!$window.cordova) {
-          q.reject('Not supported without cordova.js');
+          q.reject("Not supported without cordova.js");
         } else {
           $window.cordova.plugins.brightness.getBrightness(function (result) {
             q.resolve(result);
@@ -868,7 +864,7 @@ angular.module('ngCordova.plugins.brightness', [])
         var q = $q.defer();
 
         if (!$window.cordova) {
-          q.reject('Not supported without cordova.js');
+          q.reject("Not supported without cordova.js");
         } else {
           $window.cordova.plugins.brightness.setBrightness(data, function (result) {
             q.resolve(result);
@@ -884,7 +880,7 @@ angular.module('ngCordova.plugins.brightness', [])
         var q = $q.defer();
 
         if (!$window.cordova) {
-          q.reject('Not supported without cordova.js');
+          q.reject("Not supported without cordova.js");
         } else {
           $window.cordova.plugins.brightness.setKeepScreenOn(bool, function (result) {
             q.resolve(result);
@@ -1296,7 +1292,6 @@ angular.module('ngCordova.plugins.capture', [])
 // install : cordova plugin add https://github.com/vkeepe/card.io.git
 // link    : https://github.com/vkeepe/card.io.git
 
-/* globals CardIO: true */
 angular.module('ngCordova.plugins.cardIO', [])
 
   .provider(
@@ -1306,26 +1301,26 @@ angular.module('ngCordova.plugins.cardIO', [])
      * Default array of response data from cardIO scan card
      */
     var defaultRespFields = [
-      'card_type',
-      'redacted_card_number',
-      'card_number',
-      'expiry_month',
-      'expiry_year',
-      'short_expiry_year',
-      'cvv',
-      'zip'
+      "card_type",
+      "redacted_card_number",
+      "card_number",
+      "expiry_month",
+      "expiry_year",
+      "short_expiry_year",
+      "cvv",
+      "zip"
     ];
 
     /**
      * Default config for cardIO scan function
      */
     var defaultScanConfig = {
-      'expiry': true,
-      'cvv': true,
-      'zip': false,
-      'suppressManual': false,
-      'suppressConfirm': false,
-      'hideLogo': true
+      "expiry": true,
+      "cvv": true,
+      "zip": false,
+      "suppressManual": false,
+      "suppressConfirm": false,
+      "hideLogo": true
     };
 
     /**
@@ -1351,8 +1346,10 @@ angular.module('ngCordova.plugins.cardIO', [])
       defaultScanConfig.expiry = config.expiry || true;
       defaultScanConfig.cvv = config.cvv || true;
       defaultScanConfig.zip = config.zip || false;
-      defaultScanConfig.suppressManual = config.suppressManual || false;
-      defaultScanConfig.suppressConfirm = config.suppressConfirm || false;
+      defaultScanConfig.suppressManual = config.suppressManual
+      || false;
+      defaultScanConfig.suppressConfirm = config.suppressConfirm
+      || false;
       defaultScanConfig.hideLogo = config.hideLogo || true;
     };
 
@@ -1369,7 +1366,7 @@ angular.module('ngCordova.plugins.cardIO', [])
             defaultScanConfig,
             function (response) {
 
-              if (response === null) {
+              if (response == null) {
                 deferred.reject(null);
               } else {
 
@@ -1378,12 +1375,13 @@ angular.module('ngCordova.plugins.cardIO', [])
                   var i = 0, len = defaultRespFields.length; i < len; i++) {
                   var field = defaultRespFields[i];
 
-                  if (field === 'short_expiry_year') {
-                    respData[field] = String(response.expiry_year).substr( // jshint ignore:line
+                  if (field == "short_expiry_year") {
+                    respData[field] = String(response['expiry_year']).substr(
                       2, 2
-                    ) || '';
+                    )
+                    || "";
                   } else {
-                    respData[field] = response[field] || '';
+                    respData[field] = response[field] || "";
                   }
                 }
                 deferred.resolve(respData);
@@ -1395,8 +1393,8 @@ angular.module('ngCordova.plugins.cardIO', [])
           );
           return deferred.promise;
         }
-      };
-    }];
+      }
+    }]
   }]
 );
 
@@ -1480,7 +1478,7 @@ angular.module('ngCordova.plugins.contacts', [])
           navigator.contacts.find(fields, function (results) {
             q.resolve(results);
           },function (err) {
-            q.reject(err);
+            q.reject(err)
           });
         }
         else {
@@ -1535,7 +1533,6 @@ angular.module('ngCordova.plugins.datePicker', [])
 // install   :     cordova plugin add cordova-plugin-device
 // link      :     https://github.com/apache/cordova-plugin-device
 
-/* globals device: true */
 angular.module('ngCordova.plugins.device', [])
 
   .factory('$cordovaDevice', [function () {
@@ -1624,7 +1621,7 @@ angular.module('ngCordova.plugins.deviceMotion', [])
       getCurrentAcceleration: function () {
         var q = $q.defer();
 
-        if (angular.isUndefined(navigator.accelerometer) ||
+        if (angular.isUndefined(navigato.accelerometer) ||
         !angular.isFunction(navigator.accelerometer.getCurrentAcceleration)) {
           q.reject('Device do not support watchAcceleration');
         }
@@ -1641,7 +1638,7 @@ angular.module('ngCordova.plugins.deviceMotion', [])
       watchAcceleration: function (options) {
         var q = $q.defer();
 
-        if (angular.isUndefined(navigator.accelerometer) ||
+        if (angular.isUndefined(navigato.accelerometer) ||
         !angular.isFunction(navigator.accelerometer.watchAcceleration)) {
           q.reject('Device do not support watchAcceleration');
         }
@@ -1840,7 +1837,6 @@ angular.module('ngCordova.plugins.emailComposer', [])
 // install   :   cordova -d plugin add https://github.com/Wizcorp/phonegap-facebook-plugin.git --variable APP_ID="123456789" --variable APP_NAME="myApplication"
 // link      :   https://github.com/Wizcorp/phonegap-facebook-plugin
 
-/* globals facebookConnectPlugin: true */
 angular.module('ngCordova.plugins.facebook', [])
 
   .provider('$cordovaFacebook', [function () {
@@ -1853,7 +1849,7 @@ angular.module('ngCordova.plugins.facebook', [])
       */
     this.browserInit = function (id, version) {
       this.appID = id;
-      this.appVersion = version || 'v2.0';
+      this.appVersion = version || "v2.0";
       facebookConnectPlugin.browserInit(this.appID, this.appVersion);
     };
 
@@ -2034,7 +2030,7 @@ angular.module('ngCordova.plugins.facebookAds', [])
 
 angular.module('ngCordova.plugins.file', [])
 
-  .constant('$cordovaFileError', {
+  .constant("$cordovaFileError", {
     1: 'NOT_FOUND_ERR',
     2: 'SECURITY_ERR',
     3: 'ABORT_ERR',
@@ -2061,7 +2057,7 @@ angular.module('ngCordova.plugins.file', [])
             q.resolve(result);
           }, function (error) {
             q.reject(error);
-          }, 'File', 'getFreeDiskSpace', []);
+          }, "File", "getFreeDiskSpace", []);
           return q.promise;
         },
 
@@ -2069,7 +2065,7 @@ angular.module('ngCordova.plugins.file', [])
           var q = $q.defer();
 
           if ((/^\//.test(dir))) {
-            q.reject('directory cannot start with \/');
+            q.reject("directory cannot start with \/");
           }
 
           try {
@@ -2078,7 +2074,7 @@ angular.module('ngCordova.plugins.file', [])
               if (fileSystem.isDirectory === true) {
                 q.resolve(fileSystem);
               } else {
-                q.reject({code: 13, message: 'input is not a directory'});
+                q.reject({code: 13, message: "input is not a directory"});
               }
             }, function (error) {
               error.message = $cordovaFileError[error.code];
@@ -2096,7 +2092,7 @@ angular.module('ngCordova.plugins.file', [])
           var q = $q.defer();
 
           if ((/^\//.test(file))) {
-            q.reject('directory cannot start with \/');
+            q.reject("directory cannot start with \/");
           }
 
           try {
@@ -2105,7 +2101,7 @@ angular.module('ngCordova.plugins.file', [])
               if (fileSystem.isFile === true) {
                 q.resolve(fileSystem);
               } else {
-                q.reject({code: 13, message: 'input is not a file'});
+                q.reject({code: 13, message: "input is not a file"});
               }
             }, function (error) {
               error.message = $cordovaFileError[error.code];
@@ -2123,7 +2119,7 @@ angular.module('ngCordova.plugins.file', [])
           var q = $q.defer();
 
           if ((/^\//.test(dirName))) {
-            q.reject('directory cannot start with \/');
+            q.reject("directory cannot start with \/");
           }
 
           replaceBool = replaceBool ? false : true;
@@ -2157,7 +2153,7 @@ angular.module('ngCordova.plugins.file', [])
           var q = $q.defer();
 
           if ((/^\//.test(fileName))) {
-            q.reject('file-name cannot start with \/');
+            q.reject("file-name cannot start with \/");
           }
 
           replaceBool = replaceBool ? false : true;
@@ -2190,7 +2186,7 @@ angular.module('ngCordova.plugins.file', [])
           var q = $q.defer();
 
           if ((/^\//.test(dirName))) {
-            q.reject('file-name cannot start with \/');
+            q.reject("file-name cannot start with \/");
           }
 
           try {
@@ -2221,7 +2217,7 @@ angular.module('ngCordova.plugins.file', [])
           var q = $q.defer();
 
           if ((/^\//.test(fileName))) {
-            q.reject('file-name cannot start with \/');
+            q.reject("file-name cannot start with \/");
           }
 
           try {
@@ -2252,7 +2248,7 @@ angular.module('ngCordova.plugins.file', [])
           var q = $q.defer();
 
           if ((/^\//.test(dirName))) {
-            q.reject('file-name cannot start with \/');
+            q.reject("file-name cannot start with \/");
           }
 
           try {
@@ -2283,7 +2279,7 @@ angular.module('ngCordova.plugins.file', [])
           var q = $q.defer();
 
           if ((/^\//.test(fileName))) {
-            q.reject('file-name cannot start with \/');
+            q.reject("file-name cannot start with \/");
           }
 
           replaceBool = replaceBool ? false : true;
@@ -2339,7 +2335,7 @@ angular.module('ngCordova.plugins.file', [])
           var q = $q.defer();
 
           if ((/^\//.test(fileName))) {
-            q.reject('file-name cannot start with \/');
+            q.reject("file-name cannot start with \/");
           }
 
           try {
@@ -2382,7 +2378,7 @@ angular.module('ngCordova.plugins.file', [])
           var q = $q.defer();
 
           if ((/^\//.test(file))) {
-            q.reject('file-name cannot start with \/');
+            q.reject("file-name cannot start with \/");
           }
 
           try {
@@ -2423,7 +2419,7 @@ angular.module('ngCordova.plugins.file', [])
           var q = $q.defer();
 
           if ((/^\//.test(file))) {
-            q.reject('file-name cannot start with \/');
+            q.reject("file-name cannot start with \/");
           }
 
           try {
@@ -2462,7 +2458,7 @@ angular.module('ngCordova.plugins.file', [])
           var q = $q.defer();
 
           if ((/^\//.test(file))) {
-            q.reject('file-name cannot start with \/');
+            q.reject("file-name cannot start with \/");
           }
 
           try {
@@ -2501,7 +2497,7 @@ angular.module('ngCordova.plugins.file', [])
           var q = $q.defer();
 
           if ((/^\//.test(file))) {
-            q.reject('file-name cannot start with \/');
+            q.reject("file-name cannot start with \/");
           }
 
           try {
@@ -2542,7 +2538,7 @@ angular.module('ngCordova.plugins.file', [])
           newFileName = newFileName || fileName;
 
           if ((/^\//.test(fileName)) || (/^\//.test(newFileName))) {
-            q.reject('file-name cannot start with \/');
+            q.reject("file-name cannot start with \/");
           }
 
           try {
@@ -2575,7 +2571,7 @@ angular.module('ngCordova.plugins.file', [])
           newDirName = newDirName || dirName;
 
           if (/^\//.test(dirName) || (/^\//.test(newDirName))) {
-            q.reject('file-name cannot start with \/');
+            q.reject("file-name cannot start with \/");
           }
 
           try {
@@ -2608,7 +2604,7 @@ angular.module('ngCordova.plugins.file', [])
           newDirName = newDirName || dirName;
 
           if (/^\//.test(dirName) || (/^\//.test(newDirName))) {
-            q.reject('file-name cannot start with \/');
+            q.reject("file-name cannot start with \/");
           }
 
           try {
@@ -2647,7 +2643,7 @@ angular.module('ngCordova.plugins.file', [])
           newFileName = newFileName || fileName;
 
           if ((/^\//.test(fileName))) {
-            q.reject('file-name cannot start with \/');
+            q.reject("file-name cannot start with \/");
           }
 
           try {
@@ -2769,7 +2765,6 @@ angular.module('ngCordova.plugins.fileOpener2', [])
 // install   :     cordova plugin add cordova-plugin-file-transfer
 // link      :     https://github.com/apache/cordova-plugin-file-transfer
 
-/* globals FileTransfer: true */
 angular.module('ngCordova.plugins.fileTransfer', [])
 
   .factory('$cordovaFileTransfer', ['$q', '$timeout', function ($q, $timeout) {
@@ -3034,7 +3029,7 @@ angular.module('ngCordova.plugins.ga', [])
         return q.promise;
       },
 
-      exit: function () {
+      exit: function (success, fail) {
         var q = $q.defer();
         $window.plugins.gaPlugin.exit(function (result) {
             q.resolve(result);
@@ -3529,7 +3524,7 @@ angular.module('ngCordova.plugins.googleMap', [])
         if (!$window.plugin.google.maps) {
           q.reject(null);
         } else {
-          var div = document.getElementById('map_canvas');
+          var div = document.getElementById("map_canvas");
           map = $window.plugin.google.maps.Map.getMap(options);
           map.setDiv(div);
           q.resolve(map);
@@ -3567,7 +3562,6 @@ angular.module('ngCordova.plugins.googleMap', [])
 // install   :   cordova plugin add https://github.com/ptgamr/cordova-google-play-game.git --variable APP_ID=123456789
 // link      :   https://github.com/ptgamr/cordova-google-play-game
 
-/* globals googleplaygame: true */
 angular.module('ngCordova.plugins.googlePlayGame', [])
 
   .factory('$cordovaGooglePlayGame', ['$q', function ($q) {
@@ -4189,7 +4183,7 @@ angular.module('ngCordova.plugins.inAppBrowser', [])
           var q = $q.defer();
 
           if (requestOptions && !angular.isObject(requestOptions)) {
-            q.reject('options must be an object');
+            q.reject("options must be an object");
             return q.promise;
           }
 
@@ -4284,7 +4278,6 @@ angular.module('ngCordova.plugins.insomnia', [])
 // install   :   cordova plugins add https://github.com/vstirbu/InstagramPlugin.git
 // link      :   https://github.com/vstirbu/InstagramPlugin
 
-/* globals Instagram: true */
 angular.module('ngCordova.plugins.instagram', [])
 
 .factory('$cordovaInstagram', ['$q', function ($q) {
@@ -4348,10 +4341,10 @@ angular.module('ngCordova.plugins.keyboard', [])
       });
     };
 
-    document.addEventListener('deviceready', function () {
+    document.addEventListener("deviceready", function () {
       if (cordova.plugins.Keyboard) {
-        window.addEventListener('native.keyboardshow', keyboardShowEvent, false);
-        window.addEventListener('native.keyboardhide', keyboardHideEvent, false);
+        window.addEventListener("native.keyboardshow", keyboardShowEvent, false);
+        window.addEventListener("native.keyboardhide", keyboardHideEvent, false);
       }
     });
 
@@ -4377,13 +4370,13 @@ angular.module('ngCordova.plugins.keyboard', [])
       },
 
       clearShowWatch: function () {
-        document.removeEventListener('native.keyboardshow', keyboardShowEvent);
-        $rootScope.$$listeners['$cordovaKeyboard:show'] = [];
+        document.removeEventListener("native.keyboardshow", keyboardShowEvent);
+        $rootScope.$$listeners["$cordovaKeyboard:show"] = [];
       },
 
       clearHideWatch: function () {
-        document.removeEventListener('native.keyboardhide', keyboardHideEvent);
-        $rootScope.$$listeners['$cordovaKeyboard:hide'] = [];
+        document.removeEventListener("native.keyboardhide", keyboardHideEvent);
+        $rootScope.$$listeners["$cordovaKeyboard:hide"] = [];
       }
     };
   }]);
@@ -4391,7 +4384,6 @@ angular.module('ngCordova.plugins.keyboard', [])
 // install   :      cordova plugin add https://github.com/shazron/KeychainPlugin.git
 // link      :      https://github.com/shazron/KeychainPlugin
 
-/* globals Keychain: true */
 angular.module('ngCordova.plugins.keychain', [])
 
   .factory('$cordovaKeychain', ['$q', function ($q) {
@@ -4429,7 +4421,6 @@ angular.module('ngCordova.plugins.keychain', [])
 // install   :      cordova plugin add uk.co.workingedge.phonegap.plugin.launchnavigator
 // link      :      https://github.com/dpa99c/phonegap-launch-navigator
 
-/* globals launchnavigator: true */
 angular.module('ngCordova.plugins.launchNavigator', [])
 
   .factory('$cordovaLaunchNavigator', ['$q', function ($q) {
@@ -4920,23 +4911,18 @@ angular.module('ngCordova.plugins.mMediaAds', [])
 // install   :      cordova plugin add cordova-plugin-media
 // link      :      https://github.com/apache/cordova-plugin-media
 
-/* globals Media: true */
 angular.module('ngCordova.plugins.media', [])
 
 .service('NewMedia', ['$q', '$interval', function ($q, $interval) {
   var q, q2, q3, mediaStatus = null, mediaPosition = -1, mediaTimer, mediaDuration = -1;
 
   function setTimer(media) {
-      if (angular.isDefined(mediaTimer)) {
-        return;
-      }
+      if (angular.isDefined(mediaTimer)) return;
 
       mediaTimer = $interval(function () {
           if (mediaDuration < 0) {
               mediaDuration = media.getDuration();
-              if (q && mediaDuration > 0) {
-                q.notify({duration: mediaDuration});
-              }
+              if (q && mediaDuration > 0) q.notify({duration: mediaDuration});
           }
 
           media.getCurrentPosition(
@@ -4948,12 +4934,10 @@ angular.module('ngCordova.plugins.media', [])
             },
             // error callback
             function (e) {
-                console.log('Error getting pos=' + e);
+                console.log("Error getting pos=" + e);
             });
 
-          if (q) {
-            q.notify({position: mediaPosition});
-          }
+          if (q) q.notify({position: mediaPosition});
 
       }, 1000);
   }
@@ -4992,7 +4976,7 @@ angular.module('ngCordova.plugins.media', [])
   NewMedia.prototype.play = function (options) {
       q = $q.defer();
 
-      if (typeof options !== 'object') {
+      if (typeof options !== "object") {
           options = {};
       }
 
@@ -5047,12 +5031,12 @@ angular.module('ngCordova.plugins.media', [])
     q3.resolve(duration);
     });
     return q3.promise;
-  };
+  }
 
   return NewMedia;
 
 }])
-.factory('$cordovaMedia', ['NewMedia', function (NewMedia) {
+.factory('$cordovaMedia2', ['NewMedia', function (NewMedia) {
   return {
       newMedia: function (src) {
           return new NewMedia(src);
@@ -5378,9 +5362,11 @@ angular.module('ngCordova.plugins.nativeAudio', [])
 
       play: function (id, completeCallback) {
         var q = $q.defer();
-        $window.plugins.NativeAudio.play(id, completeCallback, function (err) {
+        $window.plugins.NativeAudio.play(id, completeCallback
+        ,function (err) {
           q.reject(err);
-        }, function (result) {
+        }
+        , function (result) {
           q.resolve(result);
         });
 
@@ -5435,10 +5421,10 @@ angular.module('ngCordova.plugins.nativeAudio', [])
 // install   :      cordova plugin add cordova-plugin-network-information
 // link      :      https://github.com/apache/cordova-plugin-network-information
 
-/* globals Connection: true */
 angular.module('ngCordova.plugins.network', [])
 
   .factory('$cordovaNetwork', ['$rootScope', '$timeout', function ($rootScope, $timeout) {
+
 
     /**
       * Fires offline a event
@@ -5460,10 +5446,10 @@ angular.module('ngCordova.plugins.network', [])
       });
     };
 
-    document.addEventListener('deviceready', function () {
+    document.addEventListener("deviceready", function () {
       if (navigator.connection) {
-        document.addEventListener('offline', offlineEvent, false);
-        document.addEventListener('online', onlineEvent, false);
+        document.addEventListener("offline", offlineEvent, false);
+        document.addEventListener("online", onlineEvent, false);
       }
     });
 
@@ -5483,18 +5469,17 @@ angular.module('ngCordova.plugins.network', [])
       },
 
       clearOfflineWatch: function () {
-        document.removeEventListener('offline', offlineEvent);
-        $rootScope.$$listeners['$cordovaNetwork:offline'] = [];
+        document.removeEventListener("offline", offlineEvent);
+        $rootScope.$$listeners["$cordovaNetwork:offline"] = [];
       },
 
       clearOnlineWatch: function () {
-        document.removeEventListener('online', onlineEvent);
-        $rootScope.$$listeners['$cordovaNetwork:online'] = [];
+        document.removeEventListener("online", onlineEvent);
+        $rootScope.$$listeners["$cordovaNetwork:online"] = [];
       }
     };
   }])
-  .run(['$injector', function ($injector) {
-    $injector.get('$cordovaNetwork'); //ensure the factory always gets initialised
+  .run(['$cordovaNetwork', function ($cordovaNetwork) {
   }]);
 
 // install   :      cordova plugin add https://github.com/Paldom/PinDialog.git
@@ -5582,14 +5567,13 @@ angular.module('ngCordova.plugins.printer', [])
 // install   :      cordova plugin add https://github.com/pbernasconi/cordova-progressIndicator.git
 // link      :      http://pbernasconi.github.io/cordova-progressIndicator/
 
-/* globals ProgressIndicator: true */
 angular.module('ngCordova.plugins.progressIndicator', [])
 
-  .factory('$cordovaProgress', [function () {
+  .factory('$cordovaProgress', ['$q', function ($q) {
 
     return {
       show: function (_message) {
-        var message = _message || 'Please wait...';
+        var message = _message || "Please wait...";
         return ProgressIndicator.show(message);
       },
 
@@ -5600,14 +5584,14 @@ angular.module('ngCordova.plugins.progressIndicator', [])
 
       showSimpleWithLabel: function (_dim, _label) {
         var dim = _dim || false;
-        var label = _label || 'Loading...';
+        var label = _label || "Loading...";
         return ProgressIndicator.showSimpleWithLabel(dim, label);
       },
 
       showSimpleWithLabelDetail: function (_dim, _label, _detail) {
         var dim = _dim || false;
-        var label = _label || 'Loading...';
-        var detail = _detail || 'Please wait';
+        var label = _label || "Loading...";
+        var detail = _detail || "Please wait";
         return ProgressIndicator.showSimpleWithLabelDetail(dim, label, detail);
       },
 
@@ -5620,7 +5604,7 @@ angular.module('ngCordova.plugins.progressIndicator', [])
       showDeterminateWithLabel: function (_dim, _timeout, _label) {
         var dim = _dim || false;
         var timeout = _timeout || 50000;
-        var label = _label || 'Loading...';
+        var label = _label || "Loading...";
 
         return ProgressIndicator.showDeterminateWithLabel(dim, timeout, label);
       },
@@ -5634,7 +5618,7 @@ angular.module('ngCordova.plugins.progressIndicator', [])
       showAnnularWithLabel: function (_dim, _timeout, _label) {
         var dim = _dim || false;
         var timeout = _timeout || 50000;
-        var label = _label || 'Loading...';
+        var label = _label || "Loading...";
         return ProgressIndicator.showAnnularWithLabel(dim, timeout, label);
       },
 
@@ -5647,20 +5631,20 @@ angular.module('ngCordova.plugins.progressIndicator', [])
       showBarWithLabel: function (_dim, _timeout, _label) {
         var dim = _dim || false;
         var timeout = _timeout || 50000;
-        var label = _label || 'Loading...';
+        var label = _label || "Loading...";
         return ProgressIndicator.showBarWithLabel(dim, timeout, label);
       },
 
       showSuccess: function (_dim, _label) {
         var dim = _dim || false;
-        var label = _label || 'Success';
+        var label = _label || "Success";
         return ProgressIndicator.showSuccess(dim, label);
       },
 
       showText: function (_dim, _text, _position) {
         var dim = _dim || false;
-        var text = _text || 'Warning';
-        var position = _position || 'center';
+        var text = _text || "Warning";
+        var position = _position || "center";
         return ProgressIndicator.showText(dim, text, position);
       },
 
@@ -5677,7 +5661,7 @@ angular.module('ngCordova.plugins.progressIndicator', [])
 angular.module('ngCordova.plugins.push', [])
 
   .factory('$cordovaPush', ['$q', '$window', '$rootScope', '$timeout', function ($q, $window, $rootScope, $timeout) {
-
+    
     return {
       onNotification: function (notification) {
         $timeout(function () {
@@ -5690,12 +5674,12 @@ angular.module('ngCordova.plugins.push', [])
         var injector;
         if (config !== undefined && config.ecb === undefined) {
           if (document.querySelector('[ng-app]') === null) {
-            injector = 'document.body';
+            injector = "document.body";
           }
           else {
-            injector = 'document.querySelector(\'[ng-app]\')';
+            injector = "document.querySelector('[ng-app]')";
           }
-          config.ecb = 'angular.element(' + injector + ').injector().get(\'$cordovaPush\').onNotification';
+          config.ecb = "angular.element(" + injector + ").injector().get('$cordovaPush').onNotification";
         }
 
         $window.plugins.pushNotification.register(function (token) {
@@ -5734,7 +5718,6 @@ angular.module('ngCordova.plugins.push', [])
 // install   :      cordova plugin add https://github.com/cordova-sms/cordova-sms-plugin.git
 // link      :      https://github.com/cordova-sms/cordova-sms-plugin
 
-/* globals sms: true */
 angular.module('ngCordova.plugins.sms', [])
 
   .factory('$cordovaSms', ['$q', function ($q) {
@@ -6029,7 +6012,6 @@ angular.module('ngCordova.plugins.sqlite', [])
 // install   :      cordova plugin add cordova-plugin-statusbar
 // link      :      https://github.com/apache/cordova-plugin-statusbar
 
-/* globals StatusBar: true */
 angular.module('ngCordova.plugins.statusbar', [])
 
 .factory('$cordovaStatusbar', [function () {
@@ -6186,7 +6168,6 @@ angular.module('ngCordova.plugins.toast', [])
 // install   :      cordova plugin add https://github.com/leecrossley/cordova-plugin-touchid.git
 // link      :      https://github.com/leecrossley/cordova-plugin-touchid
 
-/* globals touchid: true */
 angular.module('ngCordova.plugins.touchid', [])
 
   .factory('$cordovaTouchID', ['$q', function ($q) {
@@ -6195,7 +6176,7 @@ angular.module('ngCordova.plugins.touchid', [])
       checkSupport: function () {
         var defer = $q.defer();
         if (!window.cordova) {
-          defer.reject('Not supported without cordova.js');
+          defer.reject("Not supported without cordova.js");
         } else {
           touchid.checkSupport(function (value) {
             defer.resolve(value);
@@ -6207,16 +6188,16 @@ angular.module('ngCordova.plugins.touchid', [])
         return defer.promise;
       },
 
-      authenticate: function (authReasonText) {
+      authenticate: function (auth_reason_text) {
         var defer = $q.defer();
         if (!window.cordova) {
-          defer.reject('Not supported without cordova.js');
+          defer.reject("Not supported without cordova.js");
         } else {
           touchid.authenticate(function (value) {
             defer.resolve(value);
           }, function (err) {
             defer.reject(err);
-          }, authReasonText);
+          }, auth_reason_text);
         }
 
         return defer.promise;
