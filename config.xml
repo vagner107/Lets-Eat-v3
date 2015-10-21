@@ -1,26 +1,4 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<widget id="com.ionicframework.appionic690590" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
-  <name>Lets Eat</name>
-  <description>
-        An Ionic Framework and Cordova project.
-    </description>
-  <author email="hi@ionicframework" href="http://ionicframework.com/">
-      Ionic Framework Team
-    </author>
-  <content src="index.html"/>
-  <access origin="*"/>
-  <preference name="webviewbounce" value="false"/>
-  <preference name="UIWebViewBounce" value="false"/>
-  <preference name="DisallowOverscroll" value="true"/>
-  <preference name="android-minSdkVersion" value="16"/>
-  <preference name="BackupWebStorage" value="none"/>
-  <feature name="StatusBar">
-    <param name="ios-package" value="CDVStatusBar" onload="true"/>
-  </feature>
-</widget>
-<!-- 
-
-<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <widget id="com.ionicframework.myapp988433" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://cordova.apache.org/ns/1.0">
   <name>Lets Eat</name>
   <description>
@@ -33,24 +11,13 @@
 
   <content src="index.html"/>
 
-  <access origin="http://app.rjag.com.br/app-IOS/*"/>
+  <access origin="*" />
+  <allow-intent href="*" />
+  <allow-navigation href="*" />
 
-  <plugin name="cordova-plugin-whitelist" version="1" />
-  <allow-intent href="http://*/*" />
-  <allow-intent href="https://*/*" />
-  <allow-intent href="tel:*" />
-  <allow-intent href="sms:*" />
-  <allow-intent href="mailto:*" />
-  <allow-intent href="geo:*" />
-
-  <platform name="android">
-    <allow-intent href="market:*" />
-  </platform>
-    <platform name="ios">
-    <allow-intent href="itms:*" />
-    <allow-intent href="itms-apps:*" />
-  </platform>
-
+  <!-- <plugin name="cordova-plugin-whitelist" version="1" /> -->
+  <plugin name="cordova-plugin-whitelist" spec="1" />
+  <gap:plugin name="cordova-plugin-whitelist" source="npm" />
 
   <preference name="webviewbounce" value="false"/>
   <preference name="orientation" value="portrait" />
@@ -86,4 +53,4 @@
   </platform>
 
 
-</widget> -->
+</widget>
