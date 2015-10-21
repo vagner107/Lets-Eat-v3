@@ -16,8 +16,7 @@
   <allow-navigation href="*" />
 
   <!-- <plugin name="cordova-plugin-whitelist" version="1" /> -->
-  <plugin name="cordova-plugin-whitelist" spec="1" />
-  <gap:plugin name="cordova-plugin-whitelist" source="npm" />
+ 
 
   <preference name="webviewbounce" value="false"/>
   <preference name="orientation" value="portrait" />
@@ -29,7 +28,8 @@
   <preference name="SplashScreenDelay" value="3000"/>
 
   <gap:plugin name="com.phonegap.plugins.pushplugin" version="2.4.0"/>
-
+  <gap:plugin name="cordova-plugin-whitelist" spec="1" />
+  
   <feature name="StatusBar">
     <param name="ios-package" value="CDVStatusBar" onload="true"/>
   </feature>
