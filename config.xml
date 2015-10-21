@@ -11,7 +11,7 @@
 
   <content src="index.html"/>
 
-  <access origin="*"/>
+  <access origin="http://app.rjag.com.br/app-IOS/*"/>
 
   <plugin name="cordova-plugin-whitelist" version="1" />
   <allow-intent href="http://*/*" />
