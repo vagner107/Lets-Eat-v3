@@ -4,11 +4,14 @@
     <meta charset="utf-8">
     <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
     <meta http-equiv="Content-Security-Policy"
-      content="script-src * 'unsafe-eval';
-                      connect-src * 'unsafe-eval';
-                      object-src 'self';
-                      style-src * 'unsafe-inline';
-                      img-src *">
+            content="script-src * 'unsafe-eval';
+            connect-src * 'unsafe-eval';
+            object-src 'self';
+            style-src * 'unsafe-inline';
+            img-src *">
+
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self' http://app.rjag.com.br/ ws://localhost:35729 data: gap: https://ssl.gstatic.com; style-src 'self' 'unsafe-inline'; media-src *;script-src 'self' localhost:35729 'unsafe-eval' 'unsafe-inline';">
+    
     <title></title>
 
     <link href="lib/ionic/css/ionic.css" rel="stylesheet">
