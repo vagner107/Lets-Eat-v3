@@ -17,6 +17,9 @@
   <access origin="*"/>
 
   <allow-navigation href="*" />
+  <allow-navigation href="http://*/*" />
+  <allow-navigation href="http://app.rjag.com.br/*" />
+
   <access origin="http://app.rjag.com.br/app-IOS/*" launch-external="yes" />
 
   <preference name="webviewbounce" value="false"/>
