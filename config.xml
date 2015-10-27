@@ -12,6 +12,8 @@
   <content src="index.html"/>
   <access origin="*"/>
 
+  <allow-navigation href="*" />
+  
   <preference name="webviewbounce" value="false"/>
   <preference name="orientation" value="portrait" />
   <preference name="UIWebViewBounce" value="false"/>
