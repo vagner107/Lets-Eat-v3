@@ -21,7 +21,6 @@ angular.module('starter')
       template: 'Sorry, You have to login again.'
     });
   });
- 
   $scope.setCurrentUsername = function(name) {
     $scope.username = name;
   };
@@ -82,7 +81,6 @@ angular.module('starter')
 	// Metodo que alimenta a variaveis com o JSON gerado na hora do login ou Refresh
 	this.setData = function(){ 
 		console.log(" chamada ao JSON Login");
-		
 		$http.get('http://app.rjag.com.br/app-IOS/login.json')			
 		 .success(function(data, status, headers, config) {
 			 datas = data;
